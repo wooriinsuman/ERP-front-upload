@@ -1,0 +1,13 @@
+[Unit]
+Description= w_portal Simple Uploader API
+After=network.target
+
+[Service]
+User=woori2
+Group=woori2
+WorkingDirectory=/home/woori2/uploader
+environment="PATH=/home/woori2/uploader/env/bin"
+ExecStart=/home/woori2/uploader/env/bin/gunicorn --bind unix:/home/woori2/uploader.sock  main:app --worker-class uvicorn.workers.UvicornWorker
+
+[Install]
+WantedBy=multi-user.target

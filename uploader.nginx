@@ -1,0 +1,7 @@
+server {
+    listen 8801;
+    client_max_body_size 10M;
+    location / {
+        proxy_pass http://unix:/home/woori2/uploader.sock;
+    }
+}
